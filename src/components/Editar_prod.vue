@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col s6">
                         <button class="btn waves-effect indigo darken-4" type="submit" name="action">Editar equipamento</button>
-                        <router-link :to="{ name: '-1' }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
+                        <router-link :to="{ path: this.$router.back() }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
                     </div>
                 </div>
             </form>
@@ -81,16 +81,22 @@ export default {
                     M.toast({ classes: 'green', html: 'Equipamento ' + result.data.data.nome + ' editado com sucesso' })
 
                     // Redirecionando o operador de volta para a listagem de usuários
-                    this.$router.push({ name: 'Produtos' })
+                    // this.$router.push({ name: 'Index' })
                 }).catch(() => {
                     // Informa o operador caso haja algum erro na requisição
                     // eslint-disable-next-line
                     return M.toast({ classes: 'red', html: 'Ops, ocorreu um erro' })
                 })
             })
+        },
+        loginCheck () {
+            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
     },
     mounted () {
+        // Valida o usuário por tipo
+        this.loginCheck()
+
         // Obtendo os dados do usuário
         // Em seguida atribui os dados para as models.
         this.$repo.get('equipamento').listID(this.$route.params.id).then(result => {
@@ -112,7 +118,7 @@ export default {
             // Notifica o operador que o usuário que ele está tentando editar não existe
             // eslint-disable-next-line
             M.toast({ classes: 'orange', html: 'O equipamento que você tentou editar não existe' })
-            this.$router.push({ name: 'Produtos' })
+            this.$router.back()
         })
     }
 }

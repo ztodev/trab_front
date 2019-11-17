@@ -76,9 +76,14 @@ export default {
                     }
                 ]
             })
+        },
+        loginCheck () {
+            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
     },
     mounted () {
+        // Validando o tipo de usuário
+        this.loginCheck()
         // Obtendo todos os usuários cadastrados no sistema
         this.$repo.get('usuario').listAll().then(results => {
             this.usuarios = results.data.data

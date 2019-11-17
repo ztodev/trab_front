@@ -1,7 +1,7 @@
 <template>
     <div class="rdias-content z-depth-5">
         <h4 class="left">Equipamentos cadastrados</h4>
-        <router-link :to="{ name: 'Criar_prod', params: { id_user: this.$route.params.id } }" class="waves-effect indigo darken-4 btn btn-small right">Cadastrar equipamento</router-link>
+        <router-link :to="{ name: 'Cliente_criar', params: { id_user: this.$route.params.id } }" class="waves-effect indigo darken-4 btn btn-small right">Cadastrar equipamento</router-link>
 
         <div class="clearfix"></div>
 
@@ -14,7 +14,6 @@
                     <th>N° Serie</th>
                     <th>Ordem de Serviço</th>
                     <th>Status</th>
-                    <th>Ação</th>
                 </tr>
             </thead>
 
@@ -24,10 +23,6 @@
                     <td>{{ equipamento.n_serie }}</td>
                     <td>{{ equipamento.ordem_servico }}</td>
                     <td>{{ equipamento.status }}</td>
-                    <td>
-                        <router-link :to="{ name: 'Editar_prod', params: { id: equipamento.id } }" :title="'Editar equipamento ' + equipamento.nome" class="waves-effect indigo darken-4 btn btn-small">Editar</router-link>
-                        <a v-on:click.prevent="onDelete(equipamento)" :title="'Deletar o equipamento '  + equipamento.nome" href="#" class="waves-effect btn btn-small red">Deletar</a>
-                    </td>
                 </tr>
             </tbody>
         </table>
@@ -39,7 +34,7 @@
 
 <script>
 export default {
-    name: 'Produtos',
+    name: 'Produtos_ver',
     data: () => ({
         equipamentos: []
     }),
@@ -80,7 +75,7 @@ export default {
     },
     mounted () {
         // Valida o usuário por tipo
-        this.loginCheck()        
+        this.loginCheck()
         // Obtendo todos os equipamentos do usuário
         this.$repo.get('equipamento').list(this.$route.params.id).then(results => {
             this.equipamentos = results.data.data

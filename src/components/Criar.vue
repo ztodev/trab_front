@@ -45,6 +45,22 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s6">
+                        <input v-model="datas.password" id="password" type="password" class="validate">
+                        <label for="password">Senha<strong class="red-text">*</strong></label>
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="status">Tipo<strong class="red-text">*</strong></label>
+                        <span class="helper-text" :data-error="errors.first('tipo')"></span>
+                        <br>
+                        <select v-model="selected">
+                            <option v-for="option in options" v-bind:key="option.value">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                    </div>                    
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
                         <input v-model="datas.endereco" id="endereco" type="text" class="validate">
                         <label for="endereco">Endereço</label>
@@ -71,11 +87,19 @@ export default {
             nome: null,
             telefone: null,
             email: null,
+            tipo: null,
+            password: null,
             endereco: null
-        }
+        },
+        selected: 'Cliente',
+        options: [
+            {text: 'Admin', value: 'Admin'},
+            {text: 'Cliente', value: 'Cliente'}
+        ]
     }),
     methods: {
         onSubmit () {
+            this.$set(this.datas, 'tipo', this.selected.toLowerCase())
             this.$validator.validate().then(result => {
                 // Verifica primeiro se os dados são válidos
                 if (!result) {
@@ -102,7 +126,14 @@ export default {
                     return M.toast({ classes: 'red', html: 'Ops, ocorreu um erro' })
                 })
             })
+        },
+        loginCheck () {
+            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
+    },
+    mounted () {
+        // Validando o tipo de usuário
+        this.loginCheck()
     }
 }
 </script>

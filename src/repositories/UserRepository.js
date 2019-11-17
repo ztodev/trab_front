@@ -17,5 +17,8 @@ export default {
     },
     delete (id) {
         return axiosPlugin.delete(`${path}` + '/' + id)
+    },
+    login (datas) {
+        return axiosPlugin.post(`${path}/login`, datas)
     }
 }

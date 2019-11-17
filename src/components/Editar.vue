@@ -81,9 +81,15 @@ export default {
                     return M.toast({ classes: 'red', html: 'Ops, ocorreu um erro' })
                 })
             })
+        },
+        loginCheck () {
+            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
     },
     mounted () {
+        // Valida o usuário por tipo
+        this.loginCheck()
+        
         // Obtendo os dados do usuário
         // Em seguida atribui os dados para as models.
         this.$repo.get('usuario').list(this.$route.params.id).then(result => {

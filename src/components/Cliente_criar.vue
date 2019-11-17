@@ -5,7 +5,7 @@
         <div class="row">
             <form v-on:submit.prevent="onSubmit" class="col s12">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <input
                             v-validate="{ required: true, regex: /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/i }"
                             v-model="datas.nome"
@@ -14,16 +14,6 @@
                             id="nome" type="text">
                         <label for="nome">Nome do equipamento<strong class="red-text">*</strong></label>
                         <span class="helper-text" :data-error="errors.first('nome')"></span>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="status">Status<strong class="red-text">*</strong></label>
-                        <span class="helper-text" :data-error="errors.first('status')"></span>
-                        <br>
-                        <select v-model="selected">
-                            <option v-for="option in options" v-bind:key="option.value">
-                                {{ option.text }}
-                            </option>
-                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -49,28 +39,18 @@
 
 <script>
 export default {
-    name: 'Editar_prod',
+    name: 'Cliente_criar',
     data: () => ({
         datas: {
             fk_id_user: null,
             nome: null,
             n_serie: null,
-            ordem_servico: null,
-            status: null
-        },
-        selected: '1',
-        options: [
-            { text: 'Aguardando', value: '1' },
-            { text: 'Em análise', value: '2' },
-            { text: 'Em reparo', value: '3' },
-            { text: 'Enviado', value: '4' },
-            { text: 'Entregue', value: '5' }
-        ]
+            ordem_servico: null
+        }
     }),
     methods: {
         onSubmit () {
             this.$set(this.datas, 'fk_id_user', this.$route.params.id_user)
-            this.$set(this.datas, 'status', this.selected)
             this.$validator.validate().then(result => {
                 // Verifica primeiro se os dados são válidos
                 if (!result) {

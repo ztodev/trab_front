@@ -14,6 +14,7 @@
 /* eslint-disable */
 import Bus from './bus'
 import Header from './components/includes/Header'
+import Login from './components/Login'
 
 // Loading
 import Loading from 'vue-loading-overlay'
