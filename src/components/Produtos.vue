@@ -1,5 +1,5 @@
 <template>
-    <div class="rdias-content z-depth-5">
+    <div class="crud-content z-depth-5">
         <h4 class="left">Equipamentos cadastrados</h4>
         <router-link :to="{ name: 'Criar_prod', params: { id_user: this.$route.params.id } }" class="waves-effect indigo darken-4 btn btn-small right">Cadastrar equipamento</router-link>
 
@@ -90,5 +90,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/scss/RDiasTeste";
+@import "../assets/scss/styles";
 </style>

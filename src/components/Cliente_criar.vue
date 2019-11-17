@@ -1,5 +1,5 @@
 <template>
-    <div class="rdias-content z-depth-5">
+    <div class="crud-content z-depth-5">
         <h4 style="padding: 0 .2em">Cadastrar equipamento</h4>
 
         <div class="row">
@@ -90,5 +90,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/scss/RDiasTeste";
+@import "../assets/scss/styles";
 </style>

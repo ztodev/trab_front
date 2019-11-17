@@ -1,0 +1,76 @@
+/* Materialize CSS */
+@import "variables";
+@import "~materialize-css/sass/materialize";
+
+/* CSS da aplicação */
+body {
+    background-color: $body-bg;
+}
+
+.crud-content {
+    background-color: #ffffff;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+.header-text {
+    font-weight: 300;
+    text-transform: uppercase;  
+    color: #212121;
+    font-size: 1.6rem;  
+}
+
+h4 {
+    margin-top: 0;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: $primary-color !important;
+}
+
+/* label underline focus color */
+.row .input-field input:focus {
+border-bottom: 1px solid $primary-color !important;
+box-shadow: 0 1px 0 0 $primary-color !important
+}
+
+/*It'll fix the select to show!*/
+select {
+    display: block
+}
+
+.logo {    
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    list-style: none;
+    border-bottom: 0;
+  }
+  
+.logo.hidden {
+    border-bottom: 1px solid #fff;
+}
+
+.logo li {
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    font-size: 2em;
+    color: #212121;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    max-width: 2em;
+}
+.logo.hidden li.spaced {
+    padding-left: 0;
+}
+.logo li.spaced {
+    padding-left: 0.5em;
+}
+
+.logo.hidden li.ghost {
+    opacity: 0;
+    max-width: 0;
+}

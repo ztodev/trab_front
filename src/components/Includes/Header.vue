@@ -4,7 +4,21 @@
             <nav class="z-depth-0">
                 <div class="nav-wrapper white">
                     <router-link :to="{ name: 'Index' }" title="EquipSolution - Página inicial">
-                     <small class="brand-logo center black-text">EquipSolution</small>
+                     <ul id="logo" class="logo hidden">
+                        <li>E</li>
+                        <li class="ghost">q</li>
+                        <li class="ghost">u</li>
+                        <li class="ghost">i</li>
+                        <li class="ghost">p</li>
+                        <li>S</li>
+                        <li class="ghost">o</li>
+                        <li class="ghost">l</li>
+                        <li class="ghost">u</li>
+                        <li class="ghost">t</li>
+                        <li class="ghost">i</li>
+                        <li class="ghost">o</li>
+                        <li class="ghost">n</li>
+                    </ul>
                     </router-link>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><router-link v-on:click.native="logout" to="/" title="Sair">Sair</router-link></li>
@@ -23,6 +37,14 @@ export default {
             localStorage.removeItem('tipo')
             this.$router.push({ name: 'Login' })
         }
+    },
+    mounted () {
+        document.getElementById("logo").onmouseenter = function(){
+            this.className = "logo";
+        };
+        document.getElementById("logo").onmouseleave = function(){
+         this.className = "logo hidden";
+        };
     }
 }
 </script>

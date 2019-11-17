@@ -1,6 +1,6 @@
-# rdias-teste-front
+# EquipSolution
 
-> Projeto de teste para a avaliação do Bruno, coordenador da RDias.
+> Projeto para faculdade cesumar do curso ADS
 
 ## Build Setup
 

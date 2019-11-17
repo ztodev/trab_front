@@ -1,9 +1,9 @@
 <template>
   <form v-on:submit.prevent="onSubmit" class="center-align">
     <div>
-      <div class="rdias-content z-depth-5">
+      <div class="crud-content z-depth-5">
         <div class="padding: 0 .2em">
-          Login
+          <h3 class="header-text">LOGIN</h3>
         </div>
         <div class="row">
           <div class="input-field col s6 push-s3">
@@ -77,5 +77,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/scss/RDiasTeste";
+@import "../assets/scss/styles";
 </style>

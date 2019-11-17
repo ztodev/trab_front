@@ -1,8 +1,8 @@
 {
-  "name": "rdias-teste-front",
+  "name": "projeto_faculdade",
   "version": "1.0.0",
-  "description": "Projeto de teste para a avaliação do Bruno, coordenador da RDias.",
-  "author": "Landersson Almeida Araújo",
+  "description": "Projeto para o trabalho da faculdade - CRUD.",
+  "author": "Natan Pires de Souza e Landersson Almeida Araújo",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
