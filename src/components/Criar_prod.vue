@@ -37,9 +37,15 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s6">
+                        <input v-model="datas.valor" id="valor" type="text" class="validate">
+                        <label for="valor">Valor<strong class="red-text">*</strong></label>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col s6">
                         <button class="btn waves-effect indigo darken-4" type="submit" name="action">Cadastrar equipamento</button>
-                        <router-link :to="{ path: this.$router.back() }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
+                        <router-link :to="{ name: 'Produtos', params: { id: this.$route.params.id_user } }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
                     </div>
                 </div>
             </form>
@@ -56,6 +62,7 @@ export default {
             nome: null,
             n_serie: null,
             ordem_servico: null,
+            valor: null,
             status: null
         },
         selected: '1',
@@ -84,7 +91,7 @@ export default {
                     M.toast({ classes: 'green', html: 'Equipamento cadastrado com sucesso' })
 
                     // Redirecionando o operador de volta para a listagem de equipamentos
-                    this.$router.back()
+                    router.push({ name: 'Produtos', params: { id: this.$route.params.id_user } })
                 }).catch(err => {
                     // Verifica se é erro de validação
                     if (err.response.status === 422) {
@@ -99,7 +106,11 @@ export default {
             })
         },
         loginCheck () {
-            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
+            // eslint-disable-next-line
+            if (localStorage.getItem('tipo') === 'cliente')
+            {
+                this.$router.push({ name: 'Login' })
+            } 
         }
     },
     mounted () {

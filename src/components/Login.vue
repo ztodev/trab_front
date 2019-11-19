@@ -61,6 +61,7 @@ export default {
                       M.toast({ classes: 'green', html: dados[0].nome + ' logado com sucesso' })
 
                       localStorage.setItem('tipo', dados[0].tipo)
+                      localStorage.setItem('id', dados[0].id)
 
                       // Redirecionando o operador
                       dados[0].tipo === 'cliente' ? this.$router.push({ name: 'Produtos_ver', params: { id: dados[0].id } }) : this.$router.push({ name: 'Index' })

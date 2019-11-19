@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="z-depth-0">
                 <div class="nav-wrapper white">
-                    <router-link :to="{ name: 'Index' }" title="EquipSolution - Página inicial">
+                    <router-link :to={} @click.native="routeIndex" title="EquipSolution - Página inicial">
                      <ul id="logo" class="logo hidden">
                         <li>E</li>
                         <li class="ghost">q</li>
@@ -33,6 +33,16 @@
 export default {
     name: 'Header',
     methods: {
+        routeIndex () {
+            if (localStorage.getItem('tipo') === 'admin')
+            {
+                this.$router.push({ name: 'Index' })
+            }
+            if (localStorage.getItem('tipo') === 'cliente')
+            {
+                this.$router.push({ name: 'Produtos_ver', params: { id: localStorage.getItem('id') } })
+            }
+        },
         logout () {
             localStorage.removeItem('tipo')
             this.$router.push({ name: 'Login' })

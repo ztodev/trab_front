@@ -13,6 +13,7 @@
                     <th>Equipamento</th>
                     <th>N° Serie</th>
                     <th>Ordem de Serviço</th>
+                    <th>Valor</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                     <td>{{ equipamento.nome }}</td>
                     <td>{{ equipamento.n_serie }}</td>
                     <td>{{ equipamento.ordem_servico }}</td>
+                    <td>{{ equipamento.valor }}</td>
                     <td>{{ equipamento.status }}</td>
                 </tr>
             </tbody>
@@ -70,7 +72,11 @@ export default {
             })
         },
         loginCheck () {
-            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
+            // eslint-disable-next-line
+           if (localStorage.getItem('tipo') === 'admin')
+           {
+               this.$router.push({ name: 'Login' })
+           }
         }
     },
     mounted () {

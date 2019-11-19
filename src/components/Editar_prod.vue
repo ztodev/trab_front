@@ -37,9 +37,15 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s6">
+                        <input v-model="datas.valor" id="valor" type="text" class="validate">
+                        <label for="valor">Valor<strong class="red-text">*</strong></label>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col s6">
                         <button class="btn waves-effect indigo darken-4" type="submit" name="action">Editar equipamento</button>
-                        <router-link :to="{ path: this.$router.back() }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
+                        <router-link :to="{ name: 'Produtos', params: { id: this.$route.params.id } }" tag="button" name="action" class="btn waves-effect grey">Cancelar</router-link>
                     </div>
                 </div>
             </form>
@@ -56,6 +62,7 @@ export default {
             nome: null,
             n_serie: null,
             ordem_servico: null,
+            valor: null,
             status: null
         },
         options: [
@@ -90,7 +97,11 @@ export default {
             })
         },
         loginCheck () {
-            localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
+            // eslint-disable-next-line
+            if (localStorage.getItem('tipo') === 'cliente')
+            {
+                this.$router.push({ name: 'Login' })
+            }
         }
     },
     mounted () {
@@ -107,6 +118,7 @@ export default {
             this.datas.n_serie = datas.n_serie
             this.datas.ordem_servico = datas.ordem_servico
             this.datas.status = datas.status
+            this.datas.valor = datas.valor
 
             // Atualizando os campos através do plugin do Materialize
             // E adicionando a açao na fila de renderização do Vue
@@ -118,7 +130,7 @@ export default {
             // Notifica o operador que o usuário que ele está tentando editar não existe
             // eslint-disable-next-line
             M.toast({ classes: 'orange', html: 'O equipamento que você tentou editar não existe' })
-            this.$router.back()
+            router.push({ name: 'user', params: { userId: '123' } })
         })
     }
 }

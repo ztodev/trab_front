@@ -128,6 +128,7 @@ export default {
             })
         },
         loginCheck () {
+            // eslint-disable-next-line
             localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
     },

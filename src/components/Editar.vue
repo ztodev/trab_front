@@ -56,7 +56,8 @@ export default {
             nome: null,
             telefone: null,
             email: null,
-            endereco: null
+            endereco: null,
+            valor: null
         }
     }),
     methods: {
@@ -83,6 +84,7 @@ export default {
             })
         },
         loginCheck () {
+            // eslint-disable-next-line
             localStorage.getItem('tipo') === 'admin' ? '' : this.$router.push({ name: 'Login' })
         }
     },
