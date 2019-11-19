@@ -55,6 +55,7 @@
 
 <script>
 import {VMoney} from 'v-money'
+import { parse } from 'path'
 export default {
     name: 'Editar_prod',
     data: () => ({
@@ -71,7 +72,7 @@ export default {
           decimal: ',',
           thousands: '.',
           prefix: 'R$ ',
-          suffix: ' #',
+          suffix: '',
           precision: 2,
           masked: false /* doesn't work with directive */
         },
@@ -85,6 +86,7 @@ export default {
     }),
     methods: {
         onSubmit () {
+            this.$set(this.datas, 'valor', this.price)
             this.$validator.validate().then(result => {
                 if (!result) {
                     // eslint-disable-next-line
@@ -92,6 +94,7 @@ export default {
                 }
 
                 // Enviando os novos dados para o servidor
+                // eslint-disable-next-line               
                 this.$repo.get('equipamento').update(this.$route.params.id, this.datas).then((result) => {
                     // Exibindo a notificação usando o Materialize
                     // eslint-disable-next-line
@@ -129,6 +132,7 @@ export default {
             this.datas.ordem_servico = datas.ordem_servico
             this.datas.status = datas.status
             this.datas.valor = datas.valor
+            this.price = datas.valor
 
             // Atualizando os campos através do plugin do Materialize
             // E adicionando a açao na fila de renderização do Vue

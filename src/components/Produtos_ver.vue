@@ -72,8 +72,11 @@ export default {
             })
         },
         formatPrice(value) {
-            let val = (value/1).toFixed(2).replace('.', ',')
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            value = value.toString().replace(/\D/g,"");
+            value = value.toString().replace(/(\d)(\d{8})$/,"$1.$2");
+            value = value.toString().replace(/(\d)(\d{5})$/,"$1.$2");
+            value = value.toString().replace(/(\d)(\d{2})$/,"$1,$2");
+            return value
         },
         loginCheck () {
             // eslint-disable-next-line

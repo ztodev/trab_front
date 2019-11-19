@@ -85,9 +85,9 @@ export default {
         ]
     }),
     methods: {
-        onSubmit () {
-            this.$set(this.datas, 'fk_id_user', this.$route.params.id_user)
+        onSubmit () {            
             this.$set(this.datas, 'status', this.selected)
+            this.$set(this.datas, 'valor', this.price)
             this.$validator.validate().then(result => {
                 // Verifica primeiro se os dados são válidos
                 if (!result) {
@@ -124,6 +124,7 @@ export default {
         }
     },
     mounted () {
+        this.$set(this.datas, 'fk_id_user', this.$route.params.id_user)
         // Valida o usuário por tipo
         this.loginCheck()
     },
