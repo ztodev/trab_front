@@ -59,7 +59,7 @@ export default {
                     M.toast({ classes: 'green', html: 'Equipamento cadastrado com sucesso' })
 
                     // Redirecionando o operador de volta para a listagem de equipamentos
-                    router.push({ name: 'Produtos_ver', params: { id: this.datas.fk_id_user } })
+                    this.$router.push({ name: 'Produtos_ver', params: { id: this.datas.fk_id_user } })
                 }).catch(err => {
                     // Verifica se é erro de validação
                     if (err.response.status === 422) {

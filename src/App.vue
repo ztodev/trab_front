@@ -16,6 +16,7 @@ import Bus from './bus'
 import Header from './components/includes/Header'
 import Login from './components/Login'
 
+
 // Loading
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
@@ -23,11 +24,11 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
     name: 'App',
     components: { Header, Loading },
-    data: () => ({ isLoading: false }),
+    data: () => ({ isLoading: false }),        
     mounted () {
         // Determinando se uma requisição está sendo feita no momento para mostrar o loader
         // Como citado em 'axiosPlugin.js.
         Bus.$events.$on('isFetching', bool => this.isLoading = bool)
-    }
+    },
 }
 </script>

@@ -38,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input v-model="datas.valor" id="valor" type="text" class="validate">
+                        <input v-model="datas.valor" v-model.lazy="price" v-money="money" id="valor" type="text" class="validate">
                         <label for="valor">Valor<strong class="red-text">*</strong></label>
                     </div>
                 </div>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import {VMoney} from 'v-money'
 export default {
     name: 'Editar_prod',
     data: () => ({
@@ -64,6 +65,15 @@ export default {
             ordem_servico: null,
             valor: null,
             status: null
+        },
+        price: 0.0,
+        money: {
+          decimal: ',',
+          thousands: '.',
+          prefix: 'R$ ',
+          suffix: ' #',
+          precision: 2,
+          masked: false /* doesn't work with directive */
         },
         selected: '1',
         options: [
@@ -91,7 +101,7 @@ export default {
                     M.toast({ classes: 'green', html: 'Equipamento cadastrado com sucesso' })
 
                     // Redirecionando o operador de volta para a listagem de equipamentos
-                    router.push({ name: 'Produtos', params: { id: this.$route.params.id_user } })
+                    this.$router.push({ name: 'Produtos', params: { id: this.$route.params.id_user } })
                 }).catch(err => {
                     // Verifica se é erro de validação
                     if (err.response.status === 422) {
@@ -116,7 +126,8 @@ export default {
     mounted () {
         // Valida o usuário por tipo
         this.loginCheck()
-    }
+    },
+    directives: {money: VMoney}
 }
 </script>
 

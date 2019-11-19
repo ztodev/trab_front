@@ -23,7 +23,7 @@
                     <td>{{ equipamento.nome }}</td>
                     <td>{{ equipamento.n_serie }}</td>
                     <td>{{ equipamento.ordem_servico }}</td>
-                    <td>{{ equipamento.valor }}</td>
+                    <td>R${{ formatPrice(equipamento.valor) }}</td>
                     <td>{{ equipamento.status }}</td>
                 </tr>
             </tbody>
@@ -70,6 +70,10 @@ export default {
                     }
                 ]
             })
+        },
+        formatPrice(value) {
+            let val = (value/1).toFixed(2).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
         loginCheck () {
             // eslint-disable-next-line

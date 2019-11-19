@@ -20,6 +20,7 @@
     "node-sass": "^4.12.0",
     "sass": "^1.23.0-module.beta.1",
     "sass-loader": "^7.0.0",
+    "v-money": "^0.8.1",
     "vee-validate": "^2.1.7",
     "vue": "^2.5.2",
     "vue-events": "^3.1.0",
